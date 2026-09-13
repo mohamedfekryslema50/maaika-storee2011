@@ -1,0 +1,178 @@
+:root {
+    --bg-color: #1A0F0A;       /* لون البني الشوكولاتة من خلفية اللوجو */
+    --text-main: #F4EFEA;      /* البيج الكريمي الفاتح للنصوص */
+    --accent-color: #C5A880;   /* البيج الذهبي والنحاسي للأزرار والحدود */
+    --card-bg: #261710;        /* درجة بني أفتح قليلاً للكروت */
+}
+
+body {
+    margin: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: var(--bg-color);
+    color: var(--text-main);
+    overflow-x: hidden;
+}
+
+/* 🌌 تنسيق صفحة الترحيب الكاملة */
+#splash-screen {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background: radial-gradient(circle at center, #25160f 0%, var(--bg-color) 100%);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+    transition: opacity 0.6s ease, visibility 0.6s;
+}
+
+.splash-content {
+    text-align: center;
+    padding: 20px;
+    max-width: 420px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* اللوجو المربع الكبير بحوافه الدائرية المتناسقة */
+.splash-logo {
+    width: 160px;
+    height: 160px;
+    border-radius: 28px;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.6);
+    margin-bottom: 25px;
+    object-fit: cover;
+}
+
+/* اسم المتجر مقسم لثلاث سطور متباعدة رأسياً */
+.brand-name {
+    font-size: 2.4rem;
+    line-height: 1.2;
+    margin: 0 0 10px 0;
+    color: var(--text-main);
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+/* اسمك الاحترافي بخط صغير في المنتصف */
+.developer-tag {
+    color: #8a7a71;
+    font-size: 0.85rem;
+    font-family: 'Courier New', Courier, monospace;
+    margin: 0 0 35px 0;
+    letter-spacing: 0.5px;
+}
+
+/* تنسيق حاوية الأقسام والصفوف للتقسيم الفخم */
+.splash-categories {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 45px;
+    width: 100%;
+}
+
+.splash-categories .row {
+    display: flex;
+    justify-content: center;
+    gap: 12px;
+    width: 100%;
+}
+
+/* الكبسولات البيضاوية للأقسام */
+.splash-categories span {
+    background: rgba(255, 255, 255, 0.02);
+    border: 1px solid rgba(197, 168, 128, 0.25);
+    padding: 8px 24px;
+    border-radius: 25px;
+    font-size: 0.9rem;
+    color: #d1c7bd;
+    white-space: nowrap;
+    transition: all 0.3s ease;
+}
+
+.splash-categories span:hover {
+    border-color: var(--accent-color);
+    box-shadow: 0 0 10px rgba(197, 168, 128, 0.3);
+}
+
+/* زر الدخول البيضاوي بالكامل مع تأثير وميض النيون */
+.enter-btn {
+    background: transparent;
+    color: var(--text-main);
+    border: 2px solid var(--accent-color);
+    padding: 12px 85px;
+    font-size: 1.1rem;
+    font-weight: bold;
+    border-radius: 35px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 0 10px rgba(197, 168, 128, 0.1);
+}
+
+.enter-btn:hover {
+    background-color: var(--accent-color);
+    color: var(--bg-color);
+    box-shadow: 0 0 25px var(--accent-color), 0 0 45px rgba(197, 168, 128, 0.5);
+    transform: scale(1.02);
+}
+
+/* 🌠 أنيميشن تأثير الشهب المتساقطة */
+.star-shower {
+    position: absolute;
+    width: 100%; height: 100%;
+    top: 0; left: 0;
+    overflow: hidden;
+    z-index: 1;
+    pointer-events: none;
+}
+
+.star {
+    position: absolute;
+    top: -50px;
+    width: 1.5px;
+    height: 45px;
+    background: linear-gradient(to bottom, rgba(197, 168, 128, 0), var(--accent-color));
+    animation: shoot 3.2s linear infinite;
+    opacity: 0;
+}
+
+.star:nth-child(1) { left: 12%; animation-delay: 0s; }
+.star:nth-child(2) { left: 45%; animation-delay: 1.2s; animation-duration: 3.6s; }
+.star:nth-child(3) { left: 68%; animation-delay: 0.4s; }
+.star:nth-child(4) { left: 88%; animation-delay: 1.6s; }
+.star:nth-child(5) { left: 28%; animation-delay: 2.4s; }
+
+@keyframes shoot {
+    0% { transform: translateY(0) translateX(0) rotate(-35deg); opacity: 0; }
+    15% { opacity: 0.5; }
+    100% { transform: translateY(100vh) translateX(-180px) rotate(-35deg); opacity: 0; }
+}
+
+/* 🏪 تنسيق المتجر الرئيسي والمحتويات للواجهة الثانية */
+header { padding: 20px 20px 10px 20px; text-align: center; border-bottom: 1px solid rgba(197, 168, 128, 0.1); }
+.header-top { display: flex; justify-content: center; align-items: center; gap: 10px; margin-bottom: 15px; }
+.store-title { font-size: 1.4rem; font-weight: bold; color: var(--accent-color); }
+.mini-logo { height: 35px; border-radius: 5px; }
+.search-container input { width: 90%; max-width: 400px; padding: 12px 20px; background: rgba(255,255,255,0.03); border: 1px solid rgba(197, 168, 128, 0.3); border-radius: 25px; color: white; text-align: center; font-size: 0.95rem; }
+.developer-tag-mini { margin: 10px 0; font-size: 0.8rem; color: #8a7a71; font-family: monospace; }
+nav ul { display: flex; justify-content: center; gap: 25px; list-style: none; padding: 0; margin: 15px 0 5px 0; }
+nav ul li a { color: #a3968e; text-decoration: none; font-weight: bold; font-size: 1rem; }
+nav ul li a.active { color: var(--text-main); border-bottom: 2px solid var(--accent-color); padding-bottom: 5px; }
+.hero-section { text-align: center; padding: 40px 20px; max-width: 500px; margin: 0 auto; }
+.hero-logo { max-width: 140px; border-radius: 20px; margin-bottom: 15px; }
+.hero-section h2 { font-size: 1.6rem; color: var(--text-main); }
+.hero-section p { color: #a3968e; line-height: 1.6; font-size: 0.95rem; }
+.products-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 25px; padding: 20px 5%; }
+.product-card { background-color: var(--card-bg); border: 1px solid rgba(197, 168, 128, 0.1); border-radius: 12px; padding: 15px; text-align: center; }
+.product-card img { width: 100%; height: 220px; object-fit: cover; border-radius: 8px; }
+.product-card h3 { margin: 12px 0 6px 0; font-size: 1.2rem; }
+.product-card .price { color: var(--accent-color); font-weight: bold; display: block; margin-bottom: 15px; }
+.order-btn { background-color: var(--accent-color); color: var(--bg-color); border: none; padding: 12px; width: 100%; border-radius: 6px; font-weight: bold; cursor: pointer; }
+.hidden { display: none !important; }
